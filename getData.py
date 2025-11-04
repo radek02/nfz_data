@@ -81,6 +81,7 @@ with open(output_file, "w", newline="", encoding="utf-8") as csvfile:
 
                     if not actual_data_array:
                         print("Actual data array is empty, skipping")
+                        break
                     else:
                         print(
                             "Proceeding to write ", len(actual_data_array), " entries"
@@ -108,4 +109,4 @@ with open(output_file, "w", newline="", encoding="utf-8") as csvfile:
                     else:
                         break
 
-print(f"✅ Data saved to {output_file}")
+print(f"Data saved to {output_file}")
