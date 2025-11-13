@@ -45,7 +45,7 @@ age_groups = {
     "8": "wiek nieustalony",
 }
 
-output_file = "drug_costs_czerniak.csv"
+output_file = "drug_costs_czerniak_fixed_link.csv"
 
 fieldnames = [
     "active_substance_code",
@@ -71,7 +71,7 @@ with open(output_file, "w", newline="", encoding="utf-8") as csvfile:
                         url = (
                             f"https://api.nfz.gov.pl/app-stat-api-pl/drug-costs-by-active-substance?"
                             f"drugProgram={DRUG_PROGRAM}&"
-                            f"dateFrom={year}-01-01&dateTo={year}-12-31"
+                            f"dateFrom={year}-01-01&dateTo={year}-12-31&"
                             f"province={province_code}&"
                             f"gender={gender_code}&"
                             f"ageGroup={age_code}&"
@@ -114,7 +114,7 @@ with open(output_file, "w", newline="", encoding="utf-8") as csvfile:
                                 }
                             )
 
-                        if data.get("links", {}).get("next", []):
+                        if data.get("links", {}).get("next"):
                             page += 1
                         else:
                             break
